@@ -375,28 +375,122 @@ body::before {
   position: relative;
 }
 
-.hero-screenshot-frame {
+/* ── Hero Stacked Screenshots ── */
+.hero-screenshots-stack {
   position: relative;
-  border-radius: var(--radius-xl);
+  width: 100%;
+  /* tall enough to accommodate the stack */
+  height: 420px;
+}
+
+.hero-shot {
+  position: absolute;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-card);
   border: 1px solid var(--glass-border);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 40px 80px rgba(0,0,0,0.6),
-    0 0 60px rgba(99,102,241,0.15);
-  animation: hero-img-float 7s ease-in-out infinite;
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 30px 60px rgba(0,0,0,0.55),
+    0 0 40px rgba(99,102,241,0.1);
+  transition: var(--transition);
 }
 
-@keyframes hero-img-float {
-  0%, 100% { transform: translateY(0) rotate(0.5deg); }
-  50% { transform: translateY(-12px) rotate(-0.5deg); }
+.hero-shot-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
 }
 
-.hero-screenshot-frame img {
+.hero-shot-chrome .chrome-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-shot img {
   width: 100%;
   display: block;
+  object-fit: cover;
+  object-position: top;
 }
+
+/* Back card — settings, rotated right, shifted right-top */
+.hero-shot--back {
+  width: 58%;
+  top: 0;
+  right: -4%;
+  transform: rotate(4deg) translateY(10px);
+  z-index: 1;
+  opacity: 0.75;
+  animation: hero-float-back 7s ease-in-out infinite;
+}
+.hero-shot--back img { max-height: 220px; }
+
+@keyframes hero-float-back {
+  0%, 100% { transform: rotate(4deg) translateY(10px); }
+  50%       { transform: rotate(3deg) translateY(-4px); }
+}
+
+/* Mid card — services panel, rotated left, shifted left-bottom */
+.hero-shot--mid {
+  width: 62%;
+  bottom: 0;
+  left: -4%;
+  transform: rotate(-3deg) translateY(-10px);
+  z-index: 2;
+  opacity: 0.88;
+  animation: hero-float-mid 8s ease-in-out infinite;
+  animation-delay: -3s;
+}
+.hero-shot--mid img { max-height: 240px; }
+
+@keyframes hero-float-mid {
+  0%, 100% { transform: rotate(-3deg) translateY(-10px); }
+  50%       { transform: rotate(-2deg) translateY(4px); }
+}
+
+/* Front card — main web app, centered, no rotation */
+.hero-shot--front {
+  width: 68%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-0.5deg);
+  z-index: 3;
+  animation: hero-float-front 6s ease-in-out infinite;
+  animation-delay: -1.5s;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.07),
+    0 40px 80px rgba(0,0,0,0.65),
+    0 0 60px rgba(99,102,241,0.18);
+}
+.hero-shot--front img { max-height: 260px; }
+
+@keyframes hero-float-front {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-0.5deg) translateY(0px); }
+  50%       { transform: translate(-50%, -50%) rotate(0.5deg) translateY(-10px); }
+}
+
+/* Hover: fan out for clarity */
+.hero-screenshots-stack:hover .hero-shot--back  { opacity: 0.9; transform: rotate(6deg) translate(12px, -12px); }
+.hero-screenshots-stack:hover .hero-shot--mid   { opacity: 1;   transform: rotate(-5deg) translate(-12px, 12px); }
+.hero-screenshots-stack:hover .hero-shot--front { box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 50px 100px rgba(0,0,0,0.7), 0 0 80px rgba(99,102,241,0.28); }
+
+@media (max-width: 900px) {
+  .hero-screenshots-stack { height: 320px; }
+  .hero-shot--front { width: 72%; }
+  .hero-shot--mid   { width: 60%; }
+  .hero-shot--back  { width: 54%; }
+}
+
+@media (max-width: 600px) {
+  .hero-screenshots-stack { height: 260px; }
+}
+
 
 /* ── Section Common ── */
 section { position: relative; z-index: 1; }
