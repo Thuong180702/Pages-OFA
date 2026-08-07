@@ -379,8 +379,10 @@ body::before {
 .hero-screenshots-stack {
   position: relative;
   width: 100%;
-  /* tall enough to accommodate the stack */
   height: 420px;
+  /* CRITICAL: clip anything that bleeds outside the column */
+  overflow: hidden;
+  border-radius: var(--radius-xl);
 }
 
 .hero-shot {
@@ -391,18 +393,21 @@ body::before {
   border: 1px solid var(--glass-border);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.05),
-    0 30px 60px rgba(0,0,0,0.55),
-    0 0 40px rgba(99,102,241,0.1);
-  transition: var(--transition);
+    0 20px 50px rgba(0,0,0,0.55),
+    0 0 30px rgba(99,102,241,0.1);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
+              opacity  0.4s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
 .hero-shot-chrome {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 14px;
-  background: rgba(255,255,255,0.03);
+  padding: 9px 13px;
+  background: rgba(255,255,255,0.035);
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .hero-shot-chrome .chrome-dot {
@@ -419,76 +424,100 @@ body::before {
   object-position: top;
 }
 
-/* Back card — settings, rotated right, shifted right-top */
+/* ── Back card: App Settings — top-right, tilted +5° ── */
 .hero-shot--back {
-  width: 58%;
-  top: 0;
-  right: -4%;
-  transform: rotate(4deg) translateY(10px);
+  width: 54%;
+  top:   8%;
+  right: 4%;
   z-index: 1;
-  opacity: 0.75;
-  animation: hero-float-back 7s ease-in-out infinite;
+  opacity: 0.68;
+  transform: rotate(5deg);
+  animation: hfb 7s ease-in-out infinite;
 }
-.hero-shot--back img { max-height: 220px; }
+.hero-shot--back img { max-height: 185px; }
 
-@keyframes hero-float-back {
-  0%, 100% { transform: rotate(4deg) translateY(10px); }
-  50%       { transform: rotate(3deg) translateY(-4px); }
+@keyframes hfb {
+  0%,100% { transform: rotate(5deg) translateY(0px); }
+  50%      { transform: rotate(4deg) translateY(-8px); }
 }
 
-/* Mid card — services panel, rotated left, shifted left-bottom */
+/* ── Mid card: Add Services — bottom-left, tilted -4° ── */
 .hero-shot--mid {
-  width: 62%;
-  bottom: 0;
-  left: -4%;
-  transform: rotate(-3deg) translateY(-10px);
+  width: 56%;
+  bottom: 6%;
+  left:   2%;
   z-index: 2;
-  opacity: 0.88;
-  animation: hero-float-mid 8s ease-in-out infinite;
-  animation-delay: -3s;
+  opacity: 0.82;
+  transform: rotate(-4deg);
+  animation: hfm 8s ease-in-out infinite;
+  animation-delay: -2.5s;
 }
-.hero-shot--mid img { max-height: 240px; }
+.hero-shot--mid img { max-height: 205px; }
 
-@keyframes hero-float-mid {
-  0%, 100% { transform: rotate(-3deg) translateY(-10px); }
-  50%       { transform: rotate(-2deg) translateY(4px); }
+@keyframes hfm {
+  0%,100% { transform: rotate(-4deg) translateY(0px); }
+  50%      { transform: rotate(-3deg) translateY(6px); }
 }
 
-/* Front card — main web app, centered, no rotation */
+/* ── Front card: Web App — centre, slight tilt ── */
 .hero-shot--front {
-  width: 68%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-0.5deg);
+  width: 62%;
+  /* anchor to centre of the container without translate overflow */
+  top:  50%;
+  left: 19%;
+  /* push up by roughly half its rendered height */
+  margin-top: -125px;
   z-index: 3;
-  animation: hero-float-front 6s ease-in-out infinite;
-  animation-delay: -1.5s;
+  transform: rotate(-1deg);
+  animation: hff 6s ease-in-out infinite;
+  animation-delay: -1s;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.07),
-    0 40px 80px rgba(0,0,0,0.65),
-    0 0 60px rgba(99,102,241,0.18);
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 30px 70px rgba(0,0,0,0.65),
+    0 0 50px rgba(99,102,241,0.22);
 }
-.hero-shot--front img { max-height: 260px; }
+.hero-shot--front img { max-height: 235px; }
 
-@keyframes hero-float-front {
-  0%, 100% { transform: translate(-50%, -50%) rotate(-0.5deg) translateY(0px); }
-  50%       { transform: translate(-50%, -50%) rotate(0.5deg) translateY(-10px); }
+@keyframes hff {
+  0%,100% { transform: rotate(-1deg) translateY(0px); }
+  50%      { transform: rotate(0.5deg) translateY(-10px); }
 }
 
-/* Hover: fan out for clarity */
-.hero-screenshots-stack:hover .hero-shot--back  { opacity: 0.9; transform: rotate(6deg) translate(12px, -12px); }
-.hero-screenshots-stack:hover .hero-shot--mid   { opacity: 1;   transform: rotate(-5deg) translate(-12px, 12px); }
-.hero-screenshots-stack:hover .hero-shot--front { box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 50px 100px rgba(0,0,0,0.7), 0 0 80px rgba(99,102,241,0.28); }
+/* Hover: fan the deck open */
+.hero-screenshots-stack:hover .hero-shot--back {
+  opacity: 0.92;
+  transform: rotate(8deg) translate(6px, -10px);
+}
+.hero-screenshots-stack:hover .hero-shot--mid {
+  opacity: 1;
+  transform: rotate(-7deg) translate(-6px, 10px);
+}
+.hero-screenshots-stack:hover .hero-shot--front {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 40px 90px rgba(0,0,0,0.7),
+    0 0 70px rgba(99,102,241,0.32);
+}
 
+/* Responsive */
 @media (max-width: 900px) {
-  .hero-screenshots-stack { height: 320px; }
-  .hero-shot--front { width: 72%; }
-  .hero-shot--mid   { width: 60%; }
-  .hero-shot--back  { width: 54%; }
+  .hero-screenshots-stack { height: 330px; }
+  .hero-shot--front { width: 64%; left: 18%; margin-top: -105px; }
+  .hero-shot--front img { max-height: 195px; }
+  .hero-shot--mid   { width: 54%; }
+  .hero-shot--mid img   { max-height: 170px; }
+  .hero-shot--back  { width: 50%; }
+  .hero-shot--back img  { max-height: 155px; }
 }
 
 @media (max-width: 600px) {
-  .hero-screenshots-stack { height: 260px; }
+  .hero-screenshots-stack { height: 250px; }
+  .hero-shot--front { width: 66%; left: 17%; margin-top: -88px; }
+  .hero-shot--front img { max-height: 160px; }
+  .hero-shot--mid   { width: 52%; }
+  .hero-shot--mid img   { max-height: 140px; }
+  .hero-shot--back  { width: 48%; }
+  .hero-shot--back img  { max-height: 128px; }
 }
 
 
