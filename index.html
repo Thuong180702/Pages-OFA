@@ -437,16 +437,16 @@
       <div class="install-card featured reveal reveal-delay-1">
         <div class="install-num">Method 1</div>
         <h3 class="install-title">Via Homebrew</h3>
-        <p class="install-desc">The fastest way. Install and keep updated with one command.</p>
+        <p class="install-desc">The fastest way. Add the tap and install with Homebrew Cask.</p>
         <div class="code-block" id="brew-code">
-          brew install --cask https://raw.githubusercontent.com/Thuong180702/notihub/main/Casks/notihub.rb
+          brew tap Thuong180702/notihub https://github.com/Thuong180702/notihub<br/>
+          brew install --cask notihub
           <button class="copy-btn" onclick="copyCode('brew-code', this)" id="copy-brew-btn">Copy</button>
         </div>
         <br/>
-        <p class="install-desc" style="margin-bottom:10px;font-size:12px;">Or add the tap first:</p>
-        <div class="code-block">
-          brew tap Thuong180702/notihub https://github.com/Thuong180702/notihub<br/>
-          brew install --cask notihub
+        <p class="install-desc" style="margin-bottom:8px;font-size:12px;">Or install directly via URL:</p>
+        <div class="code-block" id="brew-direct-code">
+          brew install --cask https://raw.githubusercontent.com/Thuong180702/notihub/main/Casks/notihub.rb
         </div>
       </div>
 

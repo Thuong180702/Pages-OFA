@@ -823,6 +823,7 @@ section { position: relative; z-index: 1; }
   padding: 28px;
   transition: var(--transition);
   position: relative;
+  min-width: 0; /* CRITICAL: prevents grid item from expanding when child has long text */
 }
 
 .install-card.featured {
@@ -877,11 +878,14 @@ section { position: relative; z-index: 1; }
   border-radius: var(--radius-sm);
   padding: 14px 16px;
   font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-  font-size: 12.5px;
+  font-size: 12px;
   color: #a5f3fc;
-  line-height: 1.7;
+  line-height: 1.6;
   position: relative;
   overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-width: 100%;
 }
 
 .code-block .copy-btn {
