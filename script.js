@@ -4,6 +4,77 @@
 
 'use strict';
 
+// ── Auto-fetch latest .dmg from GitHub Releases API ──────
+(async function initDownloadLinks() {
+  const REPO = 'Thuong180702/one-for-all';
+  const RELEASES_PAGE = `https://github.com/${REPO}/releases`;
+  const API_URL = `https://api.github.com/repos/${REPO}/releases/latest`;
+
+  // All download button IDs
+  const DOWNLOAD_BTN_IDS = [
+    'nav-download-btn',
+    'hero-download-btn',
+    'direct-download-btn',
+    'cta-download-btn',
+  ];
+
+  // Helper: set href + direct download on a button
+  function setDownloadUrl(url, isDirect) {
+    DOWNLOAD_BTN_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.href = url;
+      if (isDirect) {
+        el.setAttribute('download', '');      // triggers browser download prompt
+        el.removeAttribute('target');         // no new tab for file downloads
+        el.removeAttribute('rel');
+      }
+    });
+  }
+
+  try {
+    const res = await fetch(API_URL, {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    });
+
+    if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+
+    const release = await res.json();
+    const assets = release.assets || [];
+
+    // Find the .dmg asset (prefer .dmg, fallback to .zip)
+    const dmg  = assets.find(a => a.name.endsWith('.dmg'));
+    const zip  = assets.find(a => a.name.endsWith('.zip') && a.name.includes('mac'));
+    const best = dmg || zip;
+
+    if (best) {
+      // browser_download_url is the direct file link
+      setDownloadUrl(best.browser_download_url, true);
+
+      // Update button labels to show version + filename
+      const version = release.tag_name || '';
+      DOWNLOAD_BTN_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        // Only update text nodes, keep SVG icons intact
+        const textNode = [...el.childNodes].find(n => n.nodeType === 3 && n.textContent.trim());
+        if (textNode) {
+          textNode.textContent = ` ↓ Download ${version}`;
+        }
+      });
+
+      console.log(`[OFA] Latest release: ${version} → ${best.name}`);
+    } else {
+      // Release found but no .dmg/.zip asset yet — link to releases page
+      setDownloadUrl(RELEASES_PAGE, false);
+    }
+  } catch (err) {
+    // Network error or rate limit — fall back silently to releases page
+    console.warn('[OFA] Could not fetch latest release, using releases page:', err.message);
+    setDownloadUrl(RELEASES_PAGE, false);
+  }
+})();
+
 // ── Navbar scroll effect ──────────────────────────────────
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
