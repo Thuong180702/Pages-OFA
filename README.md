@@ -1,6 +1,6 @@
-# Pages-OFA
+# Notihub Landing Page
 
-Landing page for [one-for-all](https://github.com/Thuong180702/one-for-all) — All-in-One Native macOS Notification Hub.
+Landing page for [Notihub](https://github.com/Thuong180702/notihub) — All-in-One Native macOS Notification Hub.
 
 Built with pure HTML, CSS, and JavaScript. Deployed via Cloudflare Pages.
 

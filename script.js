@@ -6,7 +6,7 @@
 
 // ── Auto-fetch latest .dmg from GitHub Releases API ──────
 (async function initDownloadLinks() {
-  const REPO = 'Thuong180702/one-for-all';
+  const REPO = 'Thuong180702/notihub';
   const RELEASES_PAGE = `https://github.com/${REPO}/releases`;
   const API_URL = `https://api.github.com/repos/${REPO}/releases/latest`;
 
@@ -128,13 +128,13 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   let autoTimer = null;
 
   const slideTitles = [
-    'one-for-all — Web App View',
-    'one-for-all — Add Services',
-    'one-for-all — Menu Bar Panel',
-    'one-for-all — Per-Service Settings',
-    'one-for-all — App Settings',
-    'one-for-all — RAM Optimization',
-    'one-for-all — Notification History',
+    'notihub — Web App View',
+    'notihub — Add Services',
+    'notihub — Menu Bar Panel',
+    'notihub — Per-Service Settings',
+    'notihub — App Settings',
+    'notihub — RAM Optimization',
+    'notihub — Notification History',
   ];
 
   // Build dots
@@ -307,5 +307,5 @@ kbdStyle.textContent = `
 `;
 document.head.appendChild(kbdStyle);
 
-console.log('%c⚡ one-for-all', 'font-size:20px;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;');
-console.log('%chttps://github.com/Thuong180702/one-for-all', 'color:#6366f1;font-size:13px;');
+console.log('%c⚡ Notihub', 'font-size:20px;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;');
+console.log('%chttps://github.com/Thuong180702/notihub', 'color:#6366f1;font-size:13px;');
