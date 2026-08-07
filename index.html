@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One For All — All-in-One macOS Notification Hub</title>
+  <meta name="description" content="Turn all your web messaging & productivity tools (Messenger, Zalo, Gmail, Slack, Telegram, WhatsApp) into native macOS desktop apps with instant notifications, real favicons, and zero background battery drain. Free & Open Source." />
+  <meta name="keywords" content="macOS, notification hub, Messenger, Zalo, Gmail, Slack, Telegram, WhatsApp, open source, menu bar, electron app" />
+  <meta name="author" content="Thuong180702" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="One For All — All-in-One macOS Notification Hub" />
+  <meta property="og:description" content="All your messaging apps, unified. Native macOS notifications, Smart RAM auto-sleep, Multi-account isolation. Free & Open Source." />
+  <meta property="og:image" content="https://thuong180702.github.io/Pages-OFA/images/og-image.jpg" />
+  <meta property="og:url" content="https://thuong180702.github.io/Pages-OFA/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="One For All — macOS Notification Hub" />
+  <meta name="twitter:description" content="All your messaging apps, unified. Native macOS notifications, Smart RAM auto-sleep. Free & Open Source." />
+  <meta name="twitter:image" content="https://thuong180702.github.io/Pages-OFA/images/og-image.jpg" />
+
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="images/logo.png" alt="One For All Logo" />
+      one-for-all
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#install">Install</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://github.com/Thuong180702/one-for-all" target="_blank" rel="noopener" class="btn btn-ghost" id="nav-github-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://github.com/Thuong180702/one-for-all/releases" target="_blank" rel="noopener" class="btn btn-primary" id="nav-download-btn">
+        ↓ Download
+      </a>
+    </div>
+
+    <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Free &amp; Open Source · MIT License
+        </div>
+
+        <img src="images/logo.png" alt="One For All" class="hero-logo" />
+
+        <h1 class="hero-title">
+          All your apps,<br />
+          <span class="grad-text">one for all.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Turn Messenger, Zalo, Gmail, Slack, Telegram, WhatsApp and more into native macOS desktop apps — with real notifications, smart RAM management, and zero background battery drain.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://github.com/Thuong180702/one-for-all/releases" target="_blank" rel="noopener" class="btn btn-primary" id="hero-download-btn">
+            ↓ Download for macOS
+          </a>
+          <a href="https://github.com/Thuong180702/one-for-all" target="_blank" rel="noopener" class="btn btn-ghost" id="hero-github-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="icon">🍎</span>
+            macOS 12+
+          </div>
+          <div class="hero-meta-item">
+            <span class="icon">⚡</span>
+            Electron · Node.js
+          </div>
+          <div class="hero-meta-item">
+            <span class="icon">🔒</span>
+            100% Private, No Telemetry
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-screenshot-frame">
+          <img src="images/screenshot-webapp.png" alt="One For All running Zalo in native macOS window" loading="lazy" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FEATURES
+════════════════════════════════════════ -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">✦ Key Features</div>
+      <h2 class="section-title">Everything you need,<br /><span class="grad-text">nothing you don't.</span></h2>
+      <p class="section-desc">Packed with power-user features while staying lightweight. Hover each card to preview the interface.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal reveal-delay-1" id="feature-window-modes">
+        <span class="feature-icon">🪟</span>
+        <h3 class="feature-title">Dynamic Window Modes</h3>
+        <p class="feature-desc">Toggle between <strong>Standard Desktop Window</strong> (resizable with Dock icon) and <strong>Menu Bar Panel</strong> (frameless status bar popup) directly from Settings.</p>
+        <div class="feature-screenshot">
+          <img src="images/screenshot-settings-app.png" alt="Window mode settings" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2" id="feature-notifications">
+        <span class="feature-icon">🔔</span>
+        <h3 class="feature-title">True Native Notifications</h3>
+        <p class="feature-desc">Direct integration with <strong>macOS Notification Center</strong> — respects Focus Modes, Do Not Disturb, Lock Screen, and native alert sounds with per-service icons.</p>
+        <div class="feature-screenshot">
+          <img src="images/screenshot-notifications.png" alt="Notification History board" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3" id="feature-ram">
+        <span class="feature-icon">💤</span>
+        <h3 class="feature-title">Smart RAM Auto-Sleep</h3>
+        <p class="feature-desc">Automatically unloads memory for background tabs after 5m, 10m, 15m, 30m, or 60m of inactivity — while keeping unread counters <strong>100% active</strong>.</p>
+        <div class="feature-screenshot">
+          <img src="images/screenshot-ram-optimization.png" alt="RAM optimization settings" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1" id="feature-per-service">
+        <span class="feature-icon">🎛️</span>
+        <h3 class="feature-title">Per-Service Controls</h3>
+        <p class="feature-desc">Fine-tune each service independently: toggle <strong>Sound</strong>, <strong>Unread Badge</strong>, <strong>Title Fallback</strong>, and notification muting per app.</p>
+        <div class="feature-screenshot">
+          <img src="images/screenshot-settings-service.png" alt="Per-service settings" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2" id="feature-multi-service">
+        <span class="feature-icon">🌐</span>
+        <h3 class="feature-title">8+ Apps + Custom URLs</h3>
+        <p class="feature-desc">Works out-of-the-box with Messenger, Zalo, Gmail, Outlook, Slack, Discord, Telegram, WhatsApp — plus <strong>any custom web URL</strong> you add.</p>
+        <div class="feature-screenshot">
+          <img src="images/screenshot-services.png" alt="Add Services panel" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3" id="feature-hotkeys">
+        <span class="feature-icon">⌨️</span>
+        <h3 class="feature-title">Hotkeys &amp; CLI Companion</h3>
+        <p class="feature-desc">Record any <strong>global hotkey</strong> (e.g. <kbd>⌘⇧Space</kbd>) to toggle the app from anywhere. Full <code>one-for-all</code> CLI for scripting and automation.</p>
+        <div class="feature-screenshot">
+          <img src="images/screenshot-menubar-services.png" alt="Menu Bar panel mode" loading="lazy" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SCREENSHOTS GALLERY
+════════════════════════════════════════ -->
+<section class="gallery" id="screenshots">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">📸 Screenshots</div>
+      <h2 class="section-title">See it in <span class="grad-text">action.</span></h2>
+      <p class="section-desc">A tour through the full interface — from adding services to managing notifications.</p>
+    </div>
+
+    <div class="gallery-carousel reveal">
+      <div class="carousel-track-wrap">
+        <div class="carousel-chrome">
+          <span class="chrome-dot red"></span>
+          <span class="chrome-dot yellow"></span>
+          <span class="chrome-dot green"></span>
+          <span class="chrome-title" id="carousel-chrome-title">one-for-all</span>
+        </div>
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide">
+            <img src="images/screenshot-webapp.png" alt="Web App View" loading="lazy" />
+            <div class="carousel-caption">Web App View — Native macOS window running Zalo alongside Messenger</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/screenshot-services.png" alt="Add Services" loading="lazy" />
+            <div class="carousel-caption">Add Services — Pick from 8+ presets or add any custom web URL</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/screenshot-menubar-services.png" alt="Menu Bar Panel" loading="lazy" />
+            <div class="carousel-caption">Menu Bar Panel Mode — Compact popup anchored to your Mac status bar</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/screenshot-settings-service.png" alt="Per-Service Settings" loading="lazy" />
+            <div class="carousel-caption">Per-Service Settings — Sound, Badge, and Title Fallback controls per app</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/screenshot-settings-app.png" alt="App Settings" loading="lazy" />
+            <div class="carousel-caption">App Settings — Theme, Window Mode, Operating Mode, and Global Hotkey</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/screenshot-ram-optimization.png" alt="RAM Optimization" loading="lazy" />
+            <div class="carousel-caption">RAM Optimization &amp; Auto-Sleep — Configurable idle sleep from 5 to 60 minutes</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/screenshot-notifications.png" alt="Notification History" loading="lazy" />
+            <div class="carousel-caption">Notification History — Searchable log of all notifications across every service</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="carousel-prev" aria-label="Previous">&#8592;</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <button class="carousel-btn" id="carousel-next" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SUPPORTED SERVICES
+════════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">🌐 Supported Services</div>
+      <h2 class="section-title">All your apps,<br /><span class="grad-text">one unified hub.</span></h2>
+      <p class="section-desc">Works out-of-the-box with every major platform. Log in once — sessions and cookies are saved automatically.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-pill">
+        <span class="service-icon">💬</span>
+        <div>
+          <div class="service-name">Messenger</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">💙</span>
+        <div>
+          <div class="service-name">Zalo Web</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">📧</span>
+        <div>
+          <div class="service-name">Gmail</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">📨</span>
+        <div>
+          <div class="service-name">Outlook Web</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">💼</span>
+        <div>
+          <div class="service-name">Slack Web</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">🎮</span>
+        <div>
+          <div class="service-name">Discord Web</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">✈️</span>
+        <div>
+          <div class="service-name">Telegram Web</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+      <div class="service-pill">
+        <span class="service-icon">📱</span>
+        <div>
+          <div class="service-name">WhatsApp Web</div>
+          <div class="service-status">Full support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compatibility table from README -->
+    <div class="services-table-wrap reveal">
+      <table class="services-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Native Notifications</th>
+            <th>Unread Badge</th>
+            <th>Deep Link Jump</th>
+            <th>Real Favicon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>💬 Messenger</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Thread</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>💙 Zalo Web</td>
+            <td><span class="check">✅</span> Via Unread Delta</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> App Focus</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>📧 Gmail / Workspace</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Email</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>📨 Outlook Web</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Email</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>💼 Slack Web</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Channel</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>🎮 Discord Web</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Channel</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>✈️ Telegram Web</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Chat</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr>
+            <td>📱 WhatsApp Web</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="check">✅</span> Chat</td>
+            <td>🌐 Official</td>
+          </tr>
+          <tr class="custom-row">
+            <td>🔗 Custom Web App</td>
+            <td><span class="check">✅</span> Web API</td>
+            <td><span class="check">✅</span> Title Regex</td>
+            <td><span class="check">✅</span> Web Handler</td>
+            <td>🌐 Favicon API</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     INSTALL
+════════════════════════════════════════ -->
+<section class="install" id="install">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">📦 Installation</div>
+      <h2 class="section-title">Up and running<br /><span class="grad-text">in seconds.</span></h2>
+      <p class="section-desc">Three ways to install. Pick what works best for you. Requires macOS 12 Monterey or later.</p>
+    </div>
+
+    <div class="install-cards">
+
+      <div class="install-card featured reveal reveal-delay-1">
+        <div class="install-num">Method 1</div>
+        <h3 class="install-title">Via Homebrew</h3>
+        <p class="install-desc">The fastest way. Install and keep updated with one command.</p>
+        <div class="code-block" id="brew-code">
+          brew install --cask https://raw.githubusercontent.com/Thuong180702/one-for-all/main/Casks/one-for-all.rb
+          <button class="copy-btn" onclick="copyCode('brew-code', this)" id="copy-brew-btn">Copy</button>
+        </div>
+        <br/>
+        <p class="install-desc" style="margin-bottom:10px;font-size:12px;">Or add the tap first:</p>
+        <div class="code-block">
+          brew tap Thuong180702/one-for-all https://github.com/Thuong180702/one-for-all<br/>
+          brew install --cask one-for-all
+        </div>
+      </div>
+
+      <div class="install-card reveal reveal-delay-2">
+        <div class="install-num">Method 2</div>
+        <h3 class="install-title">Direct Download</h3>
+        <p class="install-desc">Download the latest release zip, unzip, and drag to Applications.</p>
+        <a href="https://github.com/Thuong180702/one-for-all/releases" target="_blank" rel="noopener" class="btn btn-outline" id="direct-download-btn" style="width:100%;justify-content:center;margin-top:8px;">
+          ↓ GitHub Releases
+        </a>
+      </div>
+
+      <div class="install-card reveal reveal-delay-3">
+        <div class="install-num">Method 3</div>
+        <h3 class="install-title">Build from Source</h3>
+        <p class="install-desc">Clone the repo and build locally. Requires Node.js ≥ 18.</p>
+        <div class="code-block" id="source-code">
+          git clone https://github.com/Thuong180702/one-for-all.git<br/>
+          cd one-for-all<br/>
+          npm install &amp;&amp; npm run build
+          <button class="copy-btn" onclick="copyCode('source-code', this)" id="copy-source-btn">Copy</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner reveal">
+      <h2 class="cta-banner-title">Ready to simplify your workflow?</h2>
+      <p class="cta-banner-desc">Join developers and power users who've unified their messaging. Free forever, open source always.</p>
+      <div class="cta-banner-actions">
+        <a href="https://github.com/Thuong180702/one-for-all/releases" target="_blank" rel="noopener" class="btn btn-primary" id="cta-download-btn">
+          ↓ Download for macOS
+        </a>
+        <a href="https://github.com/Thuong180702/one-for-all" target="_blank" rel="noopener" class="btn btn-ghost" id="cta-github-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          Star on GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="footer-brand">
+        <img src="images/logo.png" alt="One For All" />
+        <strong>one-for-all</strong>
+        &nbsp;— All-in-One macOS Hub
+      </a>
+
+      <div class="footer-links">
+        <a href="https://github.com/Thuong180702/one-for-all" target="_blank" rel="noopener" id="footer-github-link">GitHub</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/Thuong180702/one-for-all/releases" target="_blank" rel="noopener" id="footer-releases-link">Releases</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/Thuong180702/one-for-all/blob/main/LICENSE" target="_blank" rel="noopener" id="footer-license-link">MIT License</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/Thuong180702/one-for-all/issues" target="_blank" rel="noopener" id="footer-issues-link">Issues</a>
+      </div>
+
+      <div class="footer-right">
+        Built with ❤️ by <a href="https://github.com/Thuong180702" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:none;">Thuong180702</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
