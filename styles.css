@@ -515,7 +515,7 @@ section { position: relative; z-index: 1; }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -523,11 +523,12 @@ section { position: relative; z-index: 1; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 24px 22px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  min-width: 0;
 }
 
 .feature-card::before {
