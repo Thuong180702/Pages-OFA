@@ -511,9 +511,14 @@
 
       <div class="install-card reveal reveal-delay-3">
         <div class="install-num">Method 3</div>
-        <h3 class="install-title">Build from Source</h3>
-        <p class="install-desc">Clone the repo and build locally. Requires Node.js ≥ 18.</p>
-        <div class="code-block" id="source-code"><span class="code-line">git clone https://github.com/Thuong180702/notihub.git</span><span class="code-line">cd notihub</span><span class="code-line">npm install</span><span class="code-line">npm run build</span><span class="code-line">cp -R dist/notihub.app /Applications/</span><button class="copy-btn" type="button" data-copy-target="source-code" id="copy-source-btn" aria-label="Copy build-from-source commands">Copy</button></div>
+        <h3 class="install-title">Via npm</h3>
+        <p class="install-desc">Installs the <code>notihub</code> CLI (<code>notihub add</code>, <code>notihub list</code>, <code>notihub notify</code>, …).</p>
+        <div class="code-block" id="source-code"><span class="code-line">npm install -g @thuong180702/notihub</span><button class="copy-btn" type="button" data-copy-target="source-code" id="copy-source-btn" aria-label="Copy npm install command">Copy</button></div>
+        <p class="install-note">
+          CLI only — pair it with Method 1 for the packaged app. macOS blocks
+          notifications from an unpackaged Electron run, so without the Homebrew
+          cask installed this falls back to a dev-mode window that can't notify.
+        </p>
       </div>
 
     </div>
