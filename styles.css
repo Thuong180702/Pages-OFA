@@ -571,6 +571,10 @@ section { position: relative; z-index: 1; }
   opacity: 0;
   transition: var(--transition);
   border-radius: inherit;
+  /* Purely decorative, but as an absolutely-positioned, z-index:auto layer it
+     paints after (on top of) the card's static in-flow content in the CSS2.1
+     stacking order — without this it silently eats clicks on anything below it. */
+  pointer-events: none;
 }
 
 .feature-card:hover,
@@ -1011,6 +1015,11 @@ section { position: relative; z-index: 1; }
   inset: 0;
   background: var(--grad-primary);
   opacity: 0.05;
+  /* Absolutely-positioned + z-index:auto paints after the banner's static
+     title/desc/buttons in stacking order, so without this the Download and
+     Star buttons underneath were visually fine but completely unclickable —
+     every click landed on this decorative tint instead. */
+  pointer-events: none;
 }
 
 .cta-banner-title {

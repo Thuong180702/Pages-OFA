@@ -491,10 +491,7 @@
         <div class="install-num">Method 1</div>
         <h3 class="install-title">Via Homebrew</h3>
         <p class="install-desc">The fastest way. Add the tap and install with Homebrew Cask.</p>
-        <div class="code-block" id="brew-code"><span class="code-line">brew tap Thuong180702/notihub https://github.com/Thuong180702/notihub</span><span class="code-line">brew install --cask notihub</span><button class="copy-btn" type="button" data-copy-target="brew-code" id="copy-brew-btn" aria-label="Copy Homebrew install commands">Copy</button></div>
-
-        <p class="install-desc install-or">Or install directly via URL:</p>
-        <div class="code-block" id="brew-direct-code"><span class="code-line">brew install --cask https://raw.githubusercontent.com/Thuong180702/notihub/main/Casks/notihub.rb</span><button class="copy-btn" type="button" data-copy-target="brew-direct-code" id="copy-brew-direct-btn" aria-label="Copy direct cask URL command">Copy</button></div>
+        <div class="code-block" id="brew-code"><span class="code-line">brew tap thuong180702/notihub</span><span class="code-line">brew install --cask notihub</span><button class="copy-btn" type="button" data-copy-target="brew-code" id="copy-brew-btn" aria-label="Copy Homebrew install commands">Copy</button></div>
       </div>
 
       <div class="install-card reveal reveal-delay-2">
@@ -505,8 +502,10 @@
           ↓ GitHub Releases
         </a>
         <p class="install-note">
-          First launch: right-click the app and choose <strong>Open</strong> — macOS Gatekeeper
-          asks once for apps distributed outside the App Store.
+          notihub is signed ad-hoc, not notarized (no paid Apple Developer ID yet), so first
+          launch macOS may say it <strong>"is damaged and can't be opened."</strong> That's
+          Gatekeeper, not corruption — clear the quarantine flag once to fix it:
+          <code>xattr -dr com.apple.quarantine /Applications/notihub.app</code>
         </p>
       </div>
 
