@@ -611,51 +611,102 @@ section { position: relative; z-index: 1; }
   line-height: 1.65;
 }
 
-/* Collapsed until hover/focus on pointer devices. Touch devices get no hover
-   event at all, so the reveal is dropped entirely below (see the media query at
-   the end) and the screenshot is simply always shown there. */
-.feature-screenshot {
-  margin-top: 18px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  max-height: 0;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
-  opacity: 0;
+/* Feature cards are text-only by design. They used to hold a hover-revealed
+   thumbnail, but these screenshots are of a 1100pt-wide app window: at the
+   ~200px a 4-column card gives them, the app's own 13px UI text renders at
+   about 2px. No amount of object-fit tuning makes that readable, so the
+   screenshots moved to .modes and the gallery, where they get the ~850px of
+   width they actually need. */
+
+/* ── Modes Spotlight ── */
+.modes {
+  padding: 100px 0;
 }
 
-.feature-card:hover .feature-screenshot,
-.feature-card:focus-visible .feature-screenshot,
-.feature-card:focus-within .feature-screenshot {
-  /* A generous ceiling, not a target — actual height is set by the image's own
-     aspect-ratio below, so this only needs to never be the thing that clips it. */
-  max-height: 500px;
-  opacity: 1;
+.mode-row {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 72px;
 }
 
-/* aspect-ratio matches the real captured window screenshots (1760x1242).
-   The previous fixed max-height:220px forced object-fit:cover to crop ~35%
-   off both the left and right of every image to fill a near-square box from
-   a landscape source — slicing straight through button labels and settings
-   rows. Sizing the box to the source's own ratio means cover has nothing
-   left to crop; the full frame just scales down intact. */
-.feature-screenshot img {
+.mode-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mode-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  margin-bottom: 14px;
+}
+
+.mode-desc {
+  font-size: 15.5px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.mode-text--center {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 34px;
+}
+.mode-text--center .mode-title { justify-content: center; }
+.mode-text--center .mode-desc { margin-bottom: 0; }
+
+.mode-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mode-points li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 14.5px;
+  color: var(--text-secondary);
+}
+
+.mode-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.mode-shot img {
   width: 100%;
-  /* The width/height HTML attributes (kept for CLS) give the browser a
-     definite height on their own via the UA stylesheet's attr()-mapping —
-     aspect-ratio only fills in a dimension left auto, so without this explicit
-     override it has nothing to compute and the attribute height (1242px) wins
-     outright, which is the bug this rule exists to prevent. */
-  height: auto;
+  height: auto;          /* beats the width/height attributes' implied height */
   display: block;
-  aspect-ratio: 1760 / 1242;
-  object-fit: cover;
-  object-position: top;
+  border-radius: var(--radius-md);
 }
 
-/* Portrait captures (Menu Bar Panel) — same reasoning, different ratio. */
-.feature-screenshot.is-tall img {
-  aspect-ratio: 669 / 989;
+/* width, not justify-self:center — centering makes the grid item shrink-to-fit,
+   and a shrink-to-fit parent gives the width:100% image no definite width to
+   resolve against, collapsing the whole thing to zero. */
+.mode-shot--tall {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.55));
+}
+
+/* Full container width — below roughly 850px this window's UI text stops
+   being readable, which is the whole reason this section exists. */
+.mode-shot--wide {
+  width: 100%;
+  max-width: 900px;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
 }
 
 /* ── Screenshots Gallery ── */
@@ -1149,6 +1200,17 @@ section { position: relative; z-index: 1; }
   .nav-mobile-toggle { display: flex; }
   .carousel-slide { height: 380px; }
 
+  /* Stack the menu bar row; the portrait shot goes above its copy rather than
+     shrinking into a column too narrow to read. */
+  .mode-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+  .mode-row .mode-text { order: 2; }
+  .mode-row .mode-shot { order: 1; }
+  .mode-title { font-size: 21px; }
+
   /* Collapsed drop-down menu (was injected from script.js at runtime, which
      meant a flash of the desktop nav before the stylesheet existed). */
   .nav-links {
@@ -1196,17 +1258,6 @@ section { position: relative; z-index: 1; }
     object-position: center top;
   }
   .carousel-caption { padding: 26px 16px 14px; font-size: 12px; }
-}
-
-/* A screenshot that only appears on :hover is a screenshot a touch user never
-   sees. On hover-less pointers, and on any narrow layout where the cards are
-   full-width anyway, it is simply always open. */
-@media (hover: none), (max-width: 900px) {
-  .feature-screenshot {
-    max-height: 500px;
-    opacity: 1;
-    transition: none;
-  }
 }
 
 /* ── Reduced motion ── */
